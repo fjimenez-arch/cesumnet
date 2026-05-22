@@ -1,0 +1,191 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { sitio } from "../data/sitio.js";
+
+const herramientas = [
+  {
+    titulo: "Google Classroom",
+    texto: "Tareas, materiales y avisos de cada materia en un solo lugar.",
+    url: sitio.workspace.classroom,
+    color: "#1a8c4a",
+    svg: `<path fill="currentColor" d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5zm9 4.2a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4zM7.7 9.2a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8zm8.6 0a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8zM12 10.4c-1.9 0-3.5 1-3.5 2.3v1.1h7v-1.1c0-1.3-1.6-2.3-3.5-2.3zm-4.3.5c-1.5 0-2.7.8-2.7 1.8v1.1h2v-1.1c0-.7.3-1.3.9-1.7-.06-.06-.13-.1-.2-.1zm8.6 0c-.07 0-.14.04-.2.1.6.4.9 1 .9 1.7v1.1h2v-1.1c0-1-1.2-1.8-2.7-1.8z"/>`,
+  },
+  {
+    titulo: "Correo institucional",
+    texto: "Tu cuenta @cesumnet.com para comunicarte con maestros y compañeros.",
+    url: sitio.workspace.correo,
+    color: "#ea4335",
+    svg: `<path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 4.2V18h16V8.2l-8 5-8-5zM19.2 6H4.8L12 10.5 19.2 6z"/>`,
+  },
+  {
+    titulo: "Google Drive",
+    texto: "Almacena y comparte tus archivos y proyectos de forma segura.",
+    url: sitio.workspace.drive,
+    color: "#ffba00",
+    svg: `<path fill="currentColor" d="m7.7 3 4.3 7.4H3.4L7.7 3zm8.6 0L21 11.2l-4 6.9-4.6-8L16.3 3zM9.6 13.6h12L17 21H4.7l4.9-7.4z"/>`,
+  },
+  {
+    titulo: "Calendario",
+    texto: "Consulta horarios, fechas de entrega, exámenes y eventos del colegio.",
+    url: sitio.workspace.calendario,
+    color: "#1a73e8",
+    svg: `<path fill="currentColor" d="M7 2v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 7v10H5V9h14zM7 11v2h2v-2H7zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2z"/>`,
+  },
+  {
+    titulo: "Google Meet",
+    texto: "Únete a clases en línea, asesorías y juntas por videollamada.",
+    url: sitio.workspace.meet,
+    color: "#00897b",
+    svg: `<path fill="currentColor" d="M15 8.5V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-2.5l4 3.5V5l-4 3.5z"/>`,
+  },
+  {
+    titulo: "Documentos",
+    texto: "Crea y edita documentos, hojas de cálculo y presentaciones en línea.",
+    url: sitio.workspace.documentos,
+    color: "#1a73e8",
+    svg: `<path fill="currentColor" d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 12h8v1.5H8V12zm0 3h8v1.5H8V15zm0 3h5v1.5H8V18z"/>`,
+  },
+];
+---
+
+<BaseLayout titulo="Aula virtual" descripcion="Accesos a Google Classroom, correo institucional y herramientas de clase de CESUM.">
+  <section class="page-hero">
+    <div class="contenedor">
+      <span class="kicker">Aula virtual · {sitio.dominio}</span>
+      <h1>Tus herramientas de clase</h1>
+      <p>
+        Todo lo que necesitas para estudiar en CESUM, en un solo lugar. Ingresa con tu
+        cuenta institucional <strong>@cesumnet.com</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Accesos -->
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="encabezado-seccion aparece">
+        <span class="kicker">Accesos rápidos</span>
+        <h2>Plataformas para alumnos y docentes</h2>
+        <p>Haz clic en cualquier herramienta para abrirla en una pestaña nueva.</p>
+      </div>
+
+      <div class="grid grid--3 accesos">
+        {herramientas.map((h) => (
+          <a href={h.url} target="_blank" rel="noopener" class="acceso aparece">
+            <span class="acceso__icono" style={`color:${h.color}`}>
+              <svg viewBox="0 0 24 24" width="30" height="30" set:html={h.svg} />
+            </span>
+            <h3>{h.titulo}</h3>
+            <p>{h.texto}</p>
+            <span class="acceso__abrir">Abrir →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo ingresar -->
+  <section class="seccion seccion--suave">
+    <div class="contenedor grid grid--2 ayuda">
+      <div class="aparece">
+        <span class="kicker" style="color:var(--azul-500);font-family:var(--fuente-titulo);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;">Primer ingreso</span>
+        <h2 style="margin:.5rem 0 1rem;">¿Cómo inicio sesión?</h2>
+        <ol class="instrucciones">
+          <li>Abre cualquiera de las herramientas de arriba.</li>
+          <li>Escribe tu correo <strong>nombre.apellido@cesumnet.com</strong>.</li>
+          <li>Ingresa la contraseña que te dio el colegio.</li>
+          <li>Si es tu primer acceso, el sistema te pedirá cambiarla.</li>
+        </ol>
+        <p class="ayuda__nota">
+          ¿Olvidaste tu contraseña o no tienes cuenta todavía? Escribe a
+          <a href={`mailto:${sitio.email}`}>{sitio.email}</a> o acude a control escolar.
+        </p>
+      </div>
+
+      <div class="tarjeta aparece tip">
+        <div class="icono">💡</div>
+        <h3>Recomendaciones</h3>
+        <ul class="lista-check">
+          <li>Usa siempre tu cuenta <strong>@cesumnet.com</strong>, no tu correo personal.</li>
+          <li>Activa las notificaciones de Classroom para no perder tareas.</li>
+          <li>Revisa el calendario cada inicio de semana.</li>
+          <li>No compartas tu contraseña con nadie.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Soporte -->
+  <section class="seccion seccion--azul">
+    <div class="contenedor cta">
+      <div class="aparece">
+        <h2>¿Problemas para acceder?</h2>
+        <p>El equipo de soporte te ayuda con tu cuenta y plataformas.</p>
+      </div>
+      <div class="aparece">
+        <a href="/contacto" class="btn btn--primario">Solicitar soporte</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(150deg, var(--azul-900), var(--azul-700));
+    color: #fff;
+    padding-block: clamp(3rem, 7vw, 4.5rem);
+    text-align: center;
+  }
+  .page-hero .kicker {
+    color: var(--acento);
+    font-family: var(--fuente-titulo);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+  }
+  .page-hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3rem); margin: 0.6rem 0 0.8rem; }
+  .page-hero p { color: rgba(255,255,255,0.88); max-width: 56ch; margin-inline: auto; font-size: 1.08rem; }
+  .page-hero strong { color: var(--acento); }
+
+  .acceso {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--gris-200);
+    border-radius: var(--radio);
+    padding: 1.75rem;
+    transition: transform var(--transicion), box-shadow var(--transicion), border-color var(--transicion);
+  }
+  .acceso:hover { transform: translateY(-4px); box-shadow: var(--sombra); border-color: var(--azul-300); }
+  .acceso__icono {
+    width: 60px; height: 60px;
+    display: grid; place-items: center;
+    border-radius: 14px;
+    background: var(--gris-100);
+    margin-bottom: 1rem;
+  }
+  .acceso h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+  .acceso p { color: var(--gris-700); font-size: 0.95rem; flex-grow: 1; }
+  .acceso__abrir {
+    margin-top: 1rem;
+    color: var(--azul-600);
+    font-family: var(--fuente-titulo);
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  .ayuda { align-items: start; gap: 2.5rem; }
+  .instrucciones { padding-left: 1.2rem; display: grid; gap: 0.7rem; color: var(--gris-700); }
+  .instrucciones li { padding-left: 0.3rem; }
+  .ayuda__nota { margin-top: 1.2rem; color: var(--gris-700); }
+  .ayuda__nota a { color: var(--azul-600); font-weight: 600; }
+  .tip .lista-check { margin-top: 0.5rem; }
+  .lista-check { list-style: none; padding: 0; display: grid; gap: 0.6rem; }
+  .lista-check li { padding-left: 1.7rem; position: relative; color: var(--gris-700); }
+  .lista-check li::before { content: "✓"; position: absolute; left: 0; color: var(--azul-500); font-weight: 700; }
+
+  .cta { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+  .cta h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+  .cta p { color: rgba(255,255,255,0.85); margin-top: 0.4rem; }
+</style>

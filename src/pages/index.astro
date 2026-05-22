@@ -1,0 +1,276 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { sitio, niveles } from "../data/sitio.js";
+
+const valores = [
+  { titulo: "Excelencia académica", texto: "Un modelo educativo exigente que desarrolla pensamiento crítico y hábitos de estudio." },
+  { titulo: "Formación en valores", texto: "Acompañamos a cada estudiante en su crecimiento humano, ético y social." },
+  { titulo: "Comunidad cercana", texto: "Grupos reducidos y tutoría personalizada para que ningún alumno quede atrás." },
+];
+
+const razones = [
+  { icono: "🎓", titulo: "Bachillerato con validez oficial", texto: "Estudios reconocidos que abren las puertas a cualquier universidad." },
+  { icono: "🌐", titulo: "Inglés y tecnología", texto: "Inglés intensivo y herramientas digitales (Google Workspace) integradas a la clase." },
+  { icono: "🧪", titulo: "Laboratorios y talleres", texto: "Aprendizaje práctico en ciencias, cómputo y actividades artísticas." },
+  { icono: "🤝", titulo: "Orientación vocacional", texto: "Guiamos a cada joven para que elija con seguridad su camino profesional." },
+  { icono: "🏅", titulo: "Deporte y arte", texto: "Actividades extracurriculares que forman el cuerpo y el carácter." },
+  { icono: "👨‍👩‍👧", titulo: "Cercanía con las familias", texto: "Comunicación constante entre escuela, alumnos y padres de familia." },
+];
+---
+
+<BaseLayout titulo="Inicio">
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="contenedor hero__inner">
+      <div class="hero__texto">
+        <span class="hero__badge">Secundaria · Preparatoria</span>
+        <h1>{sitio.lema}</h1>
+        <p>
+          En {sitio.nombreLargo} formamos jóvenes preparados para la universidad
+          y para la vida, con un acompañamiento académico y humano cercano.
+        </p>
+        <div class="hero__acciones">
+          <a href="/admisiones" class="btn btn--primario">Inscríbete hoy →</a>
+          <a href="/#oferta" class="btn btn--linea">Conoce la oferta</a>
+        </div>
+      </div>
+
+      <div class="hero__tarjeta aparece">
+        <h3>Admisiones abiertas</h3>
+        <p>Ciclo escolar 2026–2027</p>
+        <ul>
+          <li>✔ Examen de admisión sin costo</li>
+          <li>✔ Becas académicas disponibles</li>
+          <li>✔ Inscripciones en línea</li>
+        </ul>
+        <a href="/admisiones" class="btn btn--secundario" style="width:100%;justify-content:center;">Más información</a>
+      </div>
+    </div>
+
+    <!-- Barra de cifras -->
+    <div class="contenedor">
+      <div class="hero__cifras aparece">
+        <div><strong>+25</strong><span>años de experiencia</span></div>
+        <div><strong>98%</strong><span>egresados en universidad</span></div>
+        <div><strong>15</strong><span>alumnos por grupo (prom.)</span></div>
+        <div><strong>100%</strong><span>plantilla certificada</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NOSOTROS ===================== -->
+  <section class="seccion" id="nosotros">
+    <div class="contenedor">
+      <div class="encabezado-seccion aparece">
+        <span class="kicker">Quiénes somos</span>
+        <h2>Una comunidad educativa con propósito</h2>
+        <p>
+          Llevamos más de dos décadas acompañando a las familias en la formación
+          de adolescentes responsables, críticos y comprometidos con su entorno.
+        </p>
+      </div>
+
+      <div class="grid grid--2 nosotros__mv">
+        <div class="tarjeta aparece">
+          <div class="icono">🎯</div>
+          <h3>Misión</h3>
+          <p>
+            Brindar una educación integral de excelencia que desarrolle el potencial
+            académico, humano y social de cada estudiante, preparándolo para los retos
+            del nivel superior y de la vida.
+          </p>
+        </div>
+        <div class="tarjeta aparece">
+          <div class="icono">🌟</div>
+          <h3>Visión</h3>
+          <p>
+            Ser una institución de Secundaria y Preparatoria reconocida por su calidad
+            académica, su sólida formación en valores y la trascendencia de sus egresados.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid--3" style="margin-top:1.5rem;">
+        {valores.map((v) => (
+          <div class="tarjeta aparece">
+            <h3>{v.titulo}</h3>
+            <p>{v.texto}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== OFERTA EDUCATIVA ===================== -->
+  <section class="seccion seccion--suave" id="oferta">
+    <div class="contenedor">
+      <div class="encabezado-seccion aparece">
+        <span class="kicker">Oferta educativa</span>
+        <h2>Niveles que ofrecemos</h2>
+        <p>Un trayecto académico continuo, de la secundaria a la preparatoria.</p>
+      </div>
+
+      <div class="grid grid--2">
+        {niveles.map((n) => (
+          <article class="nivel aparece">
+            <h3>{n.titulo}</h3>
+            <p>{n.descripcion}</p>
+            <ul>
+              {n.puntos.map((p) => <li>{p}</li>)}
+            </ul>
+            <a href="/admisiones" class="btn btn--linea-azul">Quiero inscribirme</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== POR QUÉ CESUM ===================== -->
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="encabezado-seccion aparece">
+        <span class="kicker">Por qué elegirnos</span>
+        <h2>Lo que hace diferente a CESUM</h2>
+      </div>
+      <div class="grid grid--3">
+        {razones.map((r) => (
+          <div class="tarjeta aparece">
+            <div class="icono" style="font-size:1.4rem;">{r.icono}</div>
+            <h3>{r.titulo}</h3>
+            <p>{r.texto}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="seccion seccion--azul">
+    <div class="contenedor cta">
+      <div class="aparece">
+        <h2>¿Listo para formar parte de CESUM?</h2>
+        <p>Agenda una visita guiada o inicia tu proceso de admisión en línea.</p>
+      </div>
+      <div class="cta__acciones aparece">
+        <a href="/admisiones" class="btn btn--primario">Iniciar admisión</a>
+        <a href="/contacto" class="btn btn--linea">Agendar visita</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    background:
+      radial-gradient(1100px 480px at 85% -10%, rgba(246,180,30,0.18), transparent 60%),
+      linear-gradient(150deg, var(--azul-900) 0%, var(--azul-700) 55%, var(--azul-600) 100%);
+    color: #fff;
+    padding-top: clamp(2.5rem, 6vw, 4.5rem);
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+    overflow: hidden;
+  }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.25fr 0.9fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .hero__badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-family: var(--fuente-titulo);
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 1.1rem;
+  }
+  .hero h1 {
+    color: #fff;
+    font-size: clamp(2.1rem, 5.2vw, 3.4rem);
+    margin-bottom: 1rem;
+  }
+  .hero__texto > p {
+    color: rgba(255,255,255,0.88);
+    font-size: 1.1rem;
+    max-width: 46ch;
+    margin-bottom: 1.75rem;
+  }
+  .hero__acciones { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+  .hero__tarjeta {
+    background: #fff;
+    color: var(--tinta);
+    border-radius: var(--radio);
+    padding: 1.75rem;
+    box-shadow: var(--sombra);
+  }
+  .hero__tarjeta h3 { font-size: 1.35rem; }
+  .hero__tarjeta > p { color: var(--azul-500); font-weight: 600; margin-bottom: 1rem; }
+  .hero__tarjeta ul { list-style: none; padding: 0; margin-bottom: 1.4rem; display: grid; gap: 0.55rem; }
+  .hero__tarjeta li { color: var(--gris-700); font-size: 0.97rem; }
+
+  .hero__cifras {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: var(--radio);
+    padding: 1.5rem;
+  }
+  .hero__cifras div { text-align: center; }
+  .hero__cifras strong {
+    display: block;
+    font-family: var(--fuente-titulo);
+    font-size: 1.9rem;
+    color: var(--acento);
+  }
+  .hero__cifras span { font-size: 0.85rem; color: rgba(255,255,255,0.82); }
+
+  /* Niveles */
+  .nivel {
+    background: #fff;
+    border: 1px solid var(--gris-200);
+    border-top: 4px solid var(--azul-700);
+    border-radius: var(--radio);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transicion), box-shadow var(--transicion);
+  }
+  .nivel:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+  .nivel h3 { font-size: 1.5rem; margin-bottom: 0.6rem; }
+  .nivel > p { color: var(--gris-700); margin-bottom: 1.1rem; }
+  .nivel ul { list-style: none; padding: 0; margin-bottom: 1.5rem; display: grid; gap: 0.5rem; }
+  .nivel li { padding-left: 1.6rem; position: relative; color: var(--gris-700); }
+  .nivel li::before {
+    content: "✓";
+    position: absolute; left: 0;
+    color: var(--azul-500); font-weight: 700;
+  }
+  .nivel .btn { margin-top: auto; align-self: flex-start; }
+
+  /* CTA */
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .cta h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); }
+  .cta p { color: rgba(255,255,255,0.85); margin-top: 0.4rem; }
+  .cta__acciones { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+
+  @media (max-width: 860px) {
+    .hero__inner { grid-template-columns: 1fr; }
+    .hero__cifras { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

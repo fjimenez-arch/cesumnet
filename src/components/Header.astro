@@ -1,0 +1,155 @@
+---
+import Logo from "./Logo.astro";
+import { sitio } from "../data/sitio.js";
+
+const enlaces = [
+  { texto: "Inicio", href: "/" },
+  { texto: "Nosotros", href: "/#nosotros" },
+  { texto: "Oferta educativa", href: "/#oferta" },
+  { texto: "Admisiones", href: "/admisiones" },
+  { texto: "Aula virtual", href: "/classroom" },
+  { texto: "Contacto", href: "/contacto" },
+];
+
+// Marca el enlace activo según la ruta actual
+const ruta = Astro.url.pathname;
+---
+
+<header class="cabecera" id="cabecera">
+  <div class="contenedor cabecera__inner">
+    <Logo />
+
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-principal">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav-principal" aria-label="Navegación principal">
+      <ul>
+        {enlaces.map((e) => (
+          <li>
+            <a
+              href={e.href}
+              class:list={["nav__link", { activo: ruta === e.href }]}
+            >
+              {e.texto}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href={sitio.workspace.classroom} target="_blank" rel="noopener" class="btn btn--primario nav__cta">
+            Acceso alumnos
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid var(--gris-200);
+    transition: box-shadow var(--transicion);
+  }
+  .cabecera.scrolled { box-shadow: var(--sombra-sm); }
+  .cabecera__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 72px;
+  }
+  .nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0;
+  }
+  .nav__link {
+    font-family: var(--fuente-titulo);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--gris-700);
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    transition: color var(--transicion), background var(--transicion);
+  }
+  .nav__link:hover { color: var(--azul-700); background: var(--azul-100); }
+  .nav__link.activo { color: var(--azul-700); font-weight: 600; }
+  .nav__cta { margin-left: 0.5rem; padding: 0.55rem 1.1rem; font-size: 0.9rem; }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px; height: 44px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    width: 26px; height: 2.5px;
+    background: var(--azul-900);
+    border-radius: 2px;
+    transition: transform var(--transicion), opacity var(--transicion);
+  }
+  .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+  @media (max-width: 920px) {
+    .menu-toggle { display: flex; }
+    .nav {
+      position: absolute;
+      top: 100%; left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--gris-200);
+      box-shadow: var(--sombra);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .nav.abierto { max-height: 460px; }
+    .nav ul {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.15rem;
+      padding: 0.75rem 1.25rem 1.25rem;
+    }
+    .nav__link { padding: 0.7rem 0.8rem; }
+    .nav__cta { margin: 0.4rem 0 0; text-align: center; justify-content: center; }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.getElementById("nav-principal");
+  const cabecera = document.getElementById("cabecera");
+
+  toggle?.addEventListener("click", () => {
+    const abierto = nav?.classList.toggle("abierto");
+    toggle.setAttribute("aria-expanded", String(!!abierto));
+  });
+
+  // Cierra el menú al hacer clic en un enlace (móvil)
+  nav?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      nav.classList.remove("abierto");
+      toggle?.setAttribute("aria-expanded", "false");
+    })
+  );
+
+  // Sombra al hacer scroll
+  const onScroll = () => {
+    if (window.scrollY > 8) cabecera?.classList.add("scrolled");
+    else cabecera?.classList.remove("scrolled");
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+</script>

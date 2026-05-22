@@ -1,0 +1,214 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { sitio } from "../data/sitio.js";
+---
+
+<BaseLayout titulo="Contacto" descripcion="Contacta a CESUM. Teléfono, correo, ubicación y formulario de informes.">
+  <section class="page-hero">
+    <div class="contenedor">
+      <span class="kicker">Contacto</span>
+      <h1>Estamos para ayudarte</h1>
+      <p>Solicita informes, agenda una visita o resuelve tus dudas. Te respondemos a la brevedad.</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenedor grid grid--2 contacto">
+      <!-- Formulario -->
+      <div class="aparece">
+        <h2>Envíanos un mensaje</h2>
+        <p class="contacto__sub">Completa el formulario y nuestro equipo se pondrá en contacto contigo.</p>
+
+        <form id="form-contacto" class="form" novalidate>
+          <div class="form__fila">
+            <div class="form__campo">
+              <label for="nombre">Nombre completo *</label>
+              <input id="nombre" name="nombre" type="text" required autocomplete="name" />
+            </div>
+            <div class="form__campo">
+              <label for="telefono">Teléfono *</label>
+              <input id="telefono" name="telefono" type="tel" required autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="form__fila">
+            <div class="form__campo">
+              <label for="email">Correo electrónico *</label>
+              <input id="email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="form__campo">
+              <label for="interes">Me interesa</label>
+              <select id="interes" name="interes">
+                <option value="Secundaria">Secundaria</option>
+                <option value="Preparatoria">Preparatoria</option>
+                <option value="Becas">Información de becas</option>
+                <option value="Visita">Agendar una visita</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form__campo">
+            <label for="mensaje">Mensaje *</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--secundario">Enviar mensaje</button>
+          <p id="form-estado" class="form__estado" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <!-- Datos de contacto -->
+      <aside class="aparece">
+        <div class="datos">
+          <h2>Información de contacto</h2>
+          <ul>
+            <li>
+              <span class="datos__icono">📍</span>
+              <div><strong>Dirección</strong><br />{sitio.direccion}</div>
+            </li>
+            <li>
+              <span class="datos__icono">📞</span>
+              <div><strong>Teléfono</strong><br /><a href={`tel:${sitio.telefono.replace(/\s/g, "")}`}>{sitio.telefono}</a></div>
+            </li>
+            <li>
+              <span class="datos__icono">✉️</span>
+              <div><strong>Correo</strong><br /><a href={`mailto:${sitio.email}`}>{sitio.email}</a></div>
+            </li>
+            <li>
+              <span class="datos__icono">🕒</span>
+              <div><strong>Horario</strong><br />{sitio.horario}</div>
+            </li>
+          </ul>
+          <a href={`https://wa.me/${sitio.whatsapp}`} target="_blank" rel="noopener" class="btn btn--primario" style="width:100%;justify-content:center;">
+            Escribir por WhatsApp
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Mapa -->
+  <section class="mapa" aria-label="Ubicación en el mapa">
+    <iframe
+      src={sitio.mapaEmbed}
+      title="Ubicación de CESUM"
+      width="100%"
+      height="420"
+      style="border:0;display:block;"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(150deg, var(--azul-900), var(--azul-700));
+    color: #fff;
+    padding-block: clamp(3rem, 7vw, 4.5rem);
+    text-align: center;
+  }
+  .page-hero .kicker {
+    color: var(--acento);
+    font-family: var(--fuente-titulo);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+  }
+  .page-hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3rem); margin: 0.6rem 0 0.8rem; }
+  .page-hero p { color: rgba(255,255,255,0.88); max-width: 56ch; margin-inline: auto; font-size: 1.08rem; }
+
+  .contacto { gap: 3rem; align-items: start; }
+  .contacto h2 { font-size: 1.6rem; }
+  .contacto__sub { color: var(--gris-700); margin: 0.5rem 0 1.5rem; }
+
+  /* Formulario */
+  .form { display: grid; gap: 1.1rem; }
+  .form__fila { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+  .form__campo { display: grid; gap: 0.4rem; }
+  .form__campo label { font-size: 0.88rem; font-weight: 500; color: var(--tinta); }
+  .form input, .form select, .form textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--gris-200);
+    border-radius: var(--radio-sm);
+    background: #fff;
+    color: var(--tinta);
+    transition: border-color var(--transicion), box-shadow var(--transicion);
+  }
+  .form input:focus, .form select:focus, .form textarea:focus {
+    outline: none;
+    border-color: var(--azul-500);
+    box-shadow: 0 0 0 3px var(--azul-100);
+  }
+  .form input:user-invalid, .form textarea:user-invalid { border-color: #d64545; }
+  .form textarea { resize: vertical; }
+  .form .btn { justify-self: start; }
+  .form__estado { font-size: 0.95rem; font-weight: 500; min-height: 1.2em; }
+  .form__estado.ok { color: #1a8c4a; }
+  .form__estado.error { color: #d64545; }
+
+  /* Datos */
+  .datos {
+    background: var(--gris-100);
+    border: 1px solid var(--gris-200);
+    border-radius: var(--radio);
+    padding: 2rem;
+  }
+  .datos ul { list-style: none; padding: 0; display: grid; gap: 1.25rem; margin: 1.25rem 0 1.75rem; }
+  .datos li { display: flex; gap: 0.9rem; align-items: flex-start; }
+  .datos__icono {
+    flex: none; width: 40px; height: 40px;
+    display: grid; place-items: center;
+    background: #fff; border-radius: 10px;
+    font-size: 1.1rem;
+  }
+  .datos li div { color: var(--gris-700); font-size: 0.95rem; }
+  .datos strong { color: var(--tinta); }
+  .datos a { color: var(--azul-600); }
+
+  .mapa { line-height: 0; }
+
+  @media (max-width: 600px) {
+    .form__fila { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script is:inline define:vars={{ destino: sitio.email }}>
+  // Validación + envío del formulario.
+  // POR DEFECTO abre el cliente de correo con el mensaje listo (funciona sin servidor).
+  // Para recibir los mensajes automáticamente, conecta un servicio como Formspree
+  // o Google Forms (ver instrucciones en el README).
+  const form = document.getElementById("form-contacto");
+  const estado = document.getElementById("form-estado");
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      estado.textContent = "Por favor completa los campos obligatorios (*).";
+      estado.className = "form__estado error";
+      form.reportValidity();
+      return;
+    }
+
+    const datos = new FormData(form);
+    const nombre = datos.get("nombre");
+    const cuerpo =
+      `Nombre: ${nombre}\n` +
+      `Teléfono: ${datos.get("telefono")}\n` +
+      `Correo: ${datos.get("email")}\n` +
+      `Interés: ${datos.get("interes")}\n\n` +
+      `Mensaje:\n${datos.get("mensaje")}`;
+
+    const asunto = `Informes web — ${nombre}`;
+    const url = `mailto:${destino}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+    window.location.href = url;
+
+    estado.textContent = "¡Gracias! Se abrió tu app de correo para enviar el mensaje.";
+    estado.className = "form__estado ok";
+    form.reset();
+  });
+</script>
