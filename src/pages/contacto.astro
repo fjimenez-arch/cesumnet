@@ -39,10 +39,11 @@ import { sitio } from "../data/sitio.js";
             <div class="form__campo">
               <label for="interes">Me interesa</label>
               <select id="interes" name="interes">
-                <option value="Secundaria">Secundaria</option>
-                <option value="Preparatoria">Preparatoria</option>
-                <option value="Becas">Información de becas</option>
-                <option value="Visita">Agendar una visita</option>
+                <option value="Matrícula">Información de matrícula</option>
+                <option value="Preescolar">Preescolar</option>
+                <option value="Primaria">Básica Primaria</option>
+                <option value="Secundaria">Básica Secundaria</option>
+                <option value="Media">Educación Media</option>
                 <option value="Otro">Otro</option>
               </select>
             </div>
@@ -67,10 +68,12 @@ import { sitio } from "../data/sitio.js";
               <span class="datos__icono">📍</span>
               <div><strong>Dirección</strong><br />{sitio.direccion}</div>
             </li>
-            <li>
-              <span class="datos__icono">📞</span>
-              <div><strong>Teléfono</strong><br /><a href={`tel:${sitio.telefono.replace(/\s/g, "")}`}>{sitio.telefono}</a></div>
-            </li>
+            {sitio.telefono && (
+              <li>
+                <span class="datos__icono">📞</span>
+                <div><strong>Teléfono</strong><br /><a href={`tel:${sitio.telefono.replace(/\s/g, "")}`}>{sitio.telefono}</a></div>
+              </li>
+            )}
             <li>
               <span class="datos__icono">✉️</span>
               <div><strong>Correo</strong><br /><a href={`mailto:${sitio.email}`}>{sitio.email}</a></div>
@@ -80,9 +83,11 @@ import { sitio } from "../data/sitio.js";
               <div><strong>Horario</strong><br />{sitio.horario}</div>
             </li>
           </ul>
-          <a href={`https://wa.me/${sitio.whatsapp}`} target="_blank" rel="noopener" class="btn btn--primario" style="width:100%;justify-content:center;">
-            Escribir por WhatsApp
-          </a>
+          {sitio.whatsapp && (
+            <a href={`https://wa.me/${sitio.whatsapp}`} target="_blank" rel="noopener" class="btn btn--primario" style="width:100%;justify-content:center;">
+              Escribir por WhatsApp
+            </a>
+          )}
         </div>
       </aside>
     </div>

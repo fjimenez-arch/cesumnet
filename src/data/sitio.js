@@ -3,40 +3,41 @@
    ---------------------------------------------------------
    Edita SOLO este archivo para actualizar los datos que se
    muestran en todo el sitio (nombre, contacto, redes, etc.).
-   Lo que dice  "EDITAR:"  son datos de ejemplo: reemplázalos
-   por la información real del colegio.
+   Lo que dice  "EDITAR:"  son datos pendientes de confirmar:
+   reemplázalos por la información real de la institución.
    ========================================================= */
 
 export const sitio = {
   nombre: "CESUM",
-  nombreLargo: "Centro de Estudios CESUM",
-  lema: "Formando líderes con valores para el mundo de hoy",
+  nombreLargo: "Concentración Educativa del Sur de Montelíbano",
+  lema: "Creatividad, saber y libertad",
+  naturaleza: "Institución educativa pública",
+  municipio: "Montelíbano, Córdoba",
+  rector: "Yimmy Mercado Petro",
   dominio: "cesumnet.com",
 
   // ---- Contacto (EDITAR con datos reales) ----
   email: "contacto@cesumnet.com",
-  emailAdmisiones: "admisiones@cesumnet.com",
-  telefono: "+52 555 123 4567",        // EDITAR
-  whatsapp: "525551234567",            // EDITAR (solo dígitos, con lada país)
-  direccion: "Av. de la Educación 100, Col. Centro, Ciudad, CP 00000", // EDITAR
+  telefono: "",                          // EDITAR: ej. "+57 4 7724000"
+  whatsapp: "",                          // EDITAR (solo dígitos con indicativo país, ej. "573001234567")
+  direccion: "Montelíbano, Córdoba, Colombia", // EDITAR con la dirección exacta
   // Pega aquí el "embed" de Google Maps de la ubicación real (EDITAR):
   mapaEmbed:
-    "https://www.google.com/maps?q=Mexico%20City&output=embed",
+    "https://www.google.com/maps?q=Montel%C3%ADbano%2C%20C%C3%B3rdoba%2C%20Colombia&output=embed",
 
-  horario: "Lunes a viernes, 7:00 a 15:00 h",
+  horario: "Doble jornada (mañana y tarde)",
 
   // ---- Redes sociales (EDITAR / deja vacío "" para ocultar) ----
   redes: {
-    facebook: "https://facebook.com/",
-    instagram: "https://instagram.com/",
+    facebook: "",
+    instagram: "",
     youtube: "",
     tiktok: "",
   },
 
   // ---- Google Workspace (el dominio ya está en Workspace) ----
   // Estos enlaces abren las herramientas iniciando sesión con el
-  // dominio del colegio. El parámetro authuser/hd ayuda a que entren
-  // directo con su cuenta @cesumnet.com.
+  // dominio de la institución (cuentas @cesumnet.com).
   workspace: {
     classroom: "https://classroom.google.com/?hd=cesumnet.com",
     correo: "https://mail.google.com/a/cesumnet.com",
@@ -47,18 +48,30 @@ export const sitio = {
   },
 };
 
-// Niveles educativos (Secundaria / Preparatoria)
+// Niveles educativos (sistema colombiano: preescolar a media)
 export const niveles = [
   {
-    titulo: "Secundaria",
+    titulo: "Preescolar",
     descripcion:
-      "Tres grados con un modelo académico sólido, acompañamiento personalizado y formación en valores.",
-    puntos: ["1°, 2° y 3° grado", "Inglés intensivo", "Tutorías y orientación"],
+      "El primer paso escolar, con enfoque en el juego, la socialización y el desarrollo integral de los más pequeños.",
+    puntos: ["Grado transición", "Aprendizaje lúdico", "Acompañamiento cercano"],
   },
   {
-    titulo: "Preparatoria",
+    titulo: "Básica Primaria",
     descripcion:
-      "Bachillerato con incorporación oficial, orientación vocacional y preparación para la universidad.",
-    puntos: ["Bachillerato general", "Áreas propedéuticas", "Preparación universitaria"],
+      "Bases sólidas en lectura, escritura, matemáticas y convivencia para el resto de la vida escolar.",
+    puntos: ["Grados 1° a 5°", "Lecto-escritura y cálculo", "Formación en valores"],
+  },
+  {
+    titulo: "Básica Secundaria",
+    descripcion:
+      "Profundización en todas las áreas del conocimiento y desarrollo del pensamiento crítico.",
+    puntos: ["Grados 6° a 9°", "Áreas fundamentales", "Tecnología e inglés"],
+  },
+  {
+    titulo: "Educación Media",
+    descripcion:
+      "Preparación para el grado bachiller, las pruebas Saber 11 y los proyectos de vida de cada estudiante.",
+    puntos: ["Grados 10° y 11°", "Bachiller académico", "Orientación vocacional"],
   },
 ];

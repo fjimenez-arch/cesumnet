@@ -3,18 +3,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { sitio, niveles } from "../data/sitio.js";
 
 const valores = [
-  { titulo: "Excelencia académica", texto: "Un modelo educativo exigente que desarrolla pensamiento crítico y hábitos de estudio." },
-  { titulo: "Formación en valores", texto: "Acompañamos a cada estudiante en su crecimiento humano, ético y social." },
-  { titulo: "Comunidad cercana", texto: "Grupos reducidos y tutoría personalizada para que ningún alumno quede atrás." },
+  { titulo: "Formación integral", texto: "Desarrollamos el potencial académico, humano y social de cada estudiante." },
+  { titulo: "Formación en valores", texto: "Acompañamos el crecimiento ético, ciudadano y de convivencia de la comunidad." },
+  { titulo: "Inclusión y cercanía", texto: "Una institución pública abierta a toda la comunidad, que no deja a nadie atrás." },
 ];
 
 const razones = [
-  { icono: "🎓", titulo: "Bachillerato con validez oficial", texto: "Estudios reconocidos que abren las puertas a cualquier universidad." },
-  { icono: "🌐", titulo: "Inglés y tecnología", texto: "Inglés intensivo y herramientas digitales (Google Workspace) integradas a la clase." },
-  { icono: "🧪", titulo: "Laboratorios y talleres", texto: "Aprendizaje práctico en ciencias, cómputo y actividades artísticas." },
-  { icono: "🤝", titulo: "Orientación vocacional", texto: "Guiamos a cada joven para que elija con seguridad su camino profesional." },
-  { icono: "🏅", titulo: "Deporte y arte", texto: "Actividades extracurriculares que forman el cuerpo y el carácter." },
-  { icono: "👨‍👩‍👧", titulo: "Cercanía con las familias", texto: "Comunicación constante entre escuela, alumnos y padres de familia." },
+  { icono: "🏛️", titulo: "Educación pública de calidad", texto: "Formación gratuita y de calidad al alcance de toda la comunidad del sur de Montelíbano." },
+  { icono: "🌐", titulo: "Tecnología e inglés", texto: "Cuentas institucionales de Google Workspace e inglés integrados al aprendizaje." },
+  { icono: "🕗", titulo: "Doble jornada", texto: "Atención en las jornadas de la mañana y la tarde para más de 2000 estudiantes." },
+  { icono: "🎓", titulo: "De preescolar a la media", texto: "Un trayecto educativo completo, desde transición hasta el grado bachiller." },
+  { icono: "🏅", titulo: "Deporte y cultura", texto: "Actividades deportivas, artísticas y culturales que forman el cuerpo y el carácter." },
+  { icono: "🤝", titulo: "Cercanía con las familias", texto: "Comunicación constante entre la institución, los estudiantes y los acudientes." },
 ];
 ---
 
@@ -23,37 +23,37 @@ const razones = [
   <section class="hero">
     <div class="contenedor hero__inner">
       <div class="hero__texto">
-        <span class="hero__badge">Secundaria · Preparatoria</span>
+        <span class="hero__badge">Institución educativa pública · {sitio.municipio}</span>
         <h1>{sitio.lema}</h1>
         <p>
-          En {sitio.nombreLargo} formamos jóvenes preparados para la universidad
-          y para la vida, con un acompañamiento académico y humano cercano.
+          La {sitio.nombreLargo} forma a más de 2000 estudiantes, desde preescolar
+          hasta undécimo, con un equipo de más de 80 docentes comprometidos con su comunidad.
         </p>
         <div class="hero__acciones">
-          <a href="/admisiones" class="btn btn--primario">Inscríbete hoy →</a>
+          <a href="/admisiones" class="btn btn--primario">Proceso de matrícula →</a>
           <a href="/#oferta" class="btn btn--linea">Conoce la oferta</a>
         </div>
       </div>
 
       <div class="hero__tarjeta aparece">
-        <h3>Admisiones abiertas</h3>
-        <p>Ciclo escolar 2026–2027</p>
+        <h3>Nuestra comunidad</h3>
+        <p>Educación pública gratuita</p>
         <ul>
-          <li>✔ Examen de admisión sin costo</li>
-          <li>✔ Becas académicas disponibles</li>
-          <li>✔ Inscripciones en línea</li>
+          <li>✔ Preescolar, primaria, secundaria y media</li>
+          <li>✔ Doble jornada (mañana y tarde)</li>
+          <li>✔ Cuentas Google Workspace para estudiantes</li>
         </ul>
-        <a href="/admisiones" class="btn btn--secundario" style="width:100%;justify-content:center;">Más información</a>
+        <a href="/#nosotros" class="btn btn--secundario" style="width:100%;justify-content:center;">Conoce la institución</a>
       </div>
     </div>
 
     <!-- Barra de cifras -->
     <div class="contenedor">
       <div class="hero__cifras aparece">
-        <div><strong>+25</strong><span>años de experiencia</span></div>
-        <div><strong>98%</strong><span>egresados en universidad</span></div>
-        <div><strong>15</strong><span>alumnos por grupo (prom.)</span></div>
-        <div><strong>100%</strong><span>plantilla certificada</span></div>
+        <div><strong>+2000</strong><span>estudiantes</span></div>
+        <div><strong>+80</strong><span>docentes</span></div>
+        <div><strong>2</strong><span>jornadas (mañana y tarde)</span></div>
+        <div><strong>12</strong><span>grados (transición a 11°)</span></div>
       </div>
     </div>
   </section>
@@ -65,8 +65,9 @@ const razones = [
         <span class="kicker">Quiénes somos</span>
         <h2>Una comunidad educativa con propósito</h2>
         <p>
-          Llevamos más de dos décadas acompañando a las familias en la formación
-          de adolescentes responsables, críticos y comprometidos con su entorno.
+          Somos una institución educativa pública del sur de Montelíbano,
+          comprometida con la formación de niñas, niños y jóvenes de nuestra
+          comunidad, desde preescolar hasta la educación media.
         </p>
       </div>
 
@@ -75,17 +76,18 @@ const razones = [
           <div class="icono">🎯</div>
           <h3>Misión</h3>
           <p>
-            Brindar una educación integral de excelencia que desarrolle el potencial
-            académico, humano y social de cada estudiante, preparándolo para los retos
-            del nivel superior y de la vida.
+            Brindar educación pública integral y de calidad que desarrolle las
+            competencias académicas, humanas y ciudadanas de los estudiantes de
+            preescolar a la media, formando bachilleres responsables con su comunidad.
           </p>
         </div>
         <div class="tarjeta aparece">
           <div class="icono">🌟</div>
           <h3>Visión</h3>
           <p>
-            Ser una institución de Secundaria y Preparatoria reconocida por su calidad
-            académica, su sólida formación en valores y la trascendencia de sus egresados.
+            Ser una institución educativa pública reconocida en el sur de Montelíbano
+            por su calidad académica, su sólida formación en valores y la continua
+            modernización de sus procesos.
           </p>
         </div>
       </div>
@@ -107,7 +109,7 @@ const razones = [
       <div class="encabezado-seccion aparece">
         <span class="kicker">Oferta educativa</span>
         <h2>Niveles que ofrecemos</h2>
-        <p>Un trayecto académico continuo, de la secundaria a la preparatoria.</p>
+        <p>Un trayecto educativo completo, desde preescolar hasta la educación media.</p>
       </div>
 
       <div class="grid grid--2">
@@ -118,7 +120,7 @@ const razones = [
             <ul>
               {n.puntos.map((p) => <li>{p}</li>)}
             </ul>
-            <a href="/admisiones" class="btn btn--linea-azul">Quiero inscribirme</a>
+            <a href="/admisiones" class="btn btn--linea-azul">Información de matrícula</a>
           </article>
         ))}
       </div>
@@ -148,12 +150,12 @@ const razones = [
   <section class="seccion seccion--azul">
     <div class="contenedor cta">
       <div class="aparece">
-        <h2>¿Listo para formar parte de CESUM?</h2>
-        <p>Agenda una visita guiada o inicia tu proceso de admisión en línea.</p>
+        <h2>¿Quieres hacer parte de CESUM?</h2>
+        <p>Conoce el proceso de matrícula o comunícate con nosotros.</p>
       </div>
       <div class="cta__acciones aparece">
-        <a href="/admisiones" class="btn btn--primario">Iniciar admisión</a>
-        <a href="/contacto" class="btn btn--linea">Agendar visita</a>
+        <a href="/admisiones" class="btn btn--primario">Proceso de matrícula</a>
+        <a href="/contacto" class="btn btn--linea">Contáctanos</a>
       </div>
     </div>
   </section>

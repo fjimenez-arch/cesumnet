@@ -54,7 +54,7 @@ const anio = new Date().getFullYear();
       <h4>Contacto</h4>
       <ul class="pie__contacto">
         <li>📍 {sitio.direccion}</li>
-        <li>📞 <a href={`tel:${sitio.telefono.replace(/\s/g, "")}`}>{sitio.telefono}</a></li>
+        {sitio.telefono && <li>📞 <a href={`tel:${sitio.telefono.replace(/\s/g, "")}`}>{sitio.telefono}</a></li>}
         <li>✉️ <a href={`mailto:${sitio.email}`}>{sitio.email}</a></li>
         <li>🕒 {sitio.horario}</li>
       </ul>

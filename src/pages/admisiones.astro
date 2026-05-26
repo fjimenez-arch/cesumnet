@@ -3,50 +3,72 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { sitio } from "../data/sitio.js";
 
 const pasos = [
-  { n: 1, titulo: "Solicita informes", texto: "Llena el formulario de contacto o escríbenos. Te enviamos costos y detalles." },
-  { n: 2, titulo: "Agenda tu visita", texto: "Conoce nuestras instalaciones y resuelve tus dudas con el equipo de admisiones." },
-  { n: 3, titulo: "Examen de admisión", texto: "Presenta el examen diagnóstico (sin costo) para conocer tu nivel académico." },
-  { n: 4, titulo: "Entrevista familiar", texto: "Una breve charla con el alumno y los padres o tutores." },
-  { n: 5, titulo: "Inscripción", texto: "Entrega de documentos, pago de inscripción y ¡bienvenido a CESUM!" },
+  { n: 1, titulo: "Consulta el cupo", texto: "Verifica la disponibilidad de cupos para el grado de interés y la jornada (mañana o tarde)." },
+  { n: 2, titulo: "Reúne los documentos", texto: "Prepara los documentos del estudiante y del acudiente (ver la lista de requisitos)." },
+  { n: 3, titulo: "Acércate a la institución", texto: "Entrega los documentos en la secretaría o coordinación en las fechas de matrícula." },
+  { n: 4, titulo: "Formaliza la matrícula", texto: "Diligencia y firma el formulario de matrícula junto con el acudiente." },
+  { n: 5, titulo: "¡Bienvenido a CESUM!", texto: "El estudiante queda registrado y listo para iniciar el año escolar." },
 ];
 
 const requisitos = [
-  "Acta de nacimiento (original y copia)",
-  "CURP del aspirante",
-  "Certificado o boleta del grado anterior",
-  "6 fotografías tamaño infantil",
-  "Comprobante de domicilio reciente",
-  "Identificación del padre, madre o tutor",
+  "Registro civil de nacimiento (copia)",
+  "Documento de identidad del estudiante (tarjeta de identidad o registro civil)",
+  "Documento de identidad del acudiente (copia)",
+  "Certificados de notas de los años anteriores",
+  "Boletín o paz y salvo del año anterior",
+  "Copia del carné de vacunas (para preescolar)",
+  "Copia de afiliación a EPS o Sisbén",
 ];
 
 const fechas = [
-  { etapa: "Apertura de inscripciones", fecha: "Febrero 2026" },
-  { etapa: "Exámenes de admisión", fecha: "Marzo – Junio 2026" },
-  { etapa: "Resultados", fecha: "5 días hábiles después del examen" },
-  { etapa: "Inicio de clases", fecha: "Agosto 2026" },
+  { etapa: "Matrículas de estudiantes nuevos", fecha: "Consultar fechas" },
+  { etapa: "Renovación de matrícula (antiguos)", fecha: "Consultar fechas" },
+  { etapa: "Inicio del año escolar", fecha: "Según calendario académico" },
 ];
 ---
 
-<BaseLayout titulo="Admisiones" descripcion="Proceso de admisión, requisitos y fechas para Secundaria y Preparatoria CESUM.">
+<BaseLayout titulo="Matrícula" descripcion="Proceso de matrícula, requisitos y fechas en la Concentración Educativa del Sur de Montelíbano (CESUM). Educación pública y gratuita.">
   <!-- Encabezado de página -->
   <section class="page-hero">
     <div class="contenedor">
-      <span class="kicker">Admisiones 2026–2027</span>
-      <h1>Tu lugar en CESUM te espera</h1>
-      <p>Un proceso sencillo y transparente para integrarte a nuestra comunidad de Secundaria y Preparatoria.</p>
+      <span class="kicker">Matrícula</span>
+      <h1>Tu matrícula en CESUM</h1>
+      <p>La matrícula en nuestra institución es <strong>pública y gratuita</strong>. Aquí te explicamos el proceso, los requisitos y los documentos que necesitas.</p>
       <div class="page-hero__acciones">
-        <a href="/contacto" class="btn btn--primario">Solicitar informes</a>
-        <a href={`https://wa.me/${sitio.whatsapp}`} target="_blank" rel="noopener" class="btn btn--linea">WhatsApp</a>
+        <a href="/contacto" class="btn btn--primario">Solicitar información</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gratuidad -->
+  <section class="seccion">
+    <div class="contenedor">
+      <div class="grid grid--3">
+        <div class="tarjeta aparece">
+          <div class="icono">🆓</div>
+          <h3>Educación gratuita</h3>
+          <p>Como institución pública, no se cobra valor de matrícula ni pensión para estudiar en CESUM.</p>
+        </div>
+        <div class="tarjeta aparece">
+          <div class="icono">🕗</div>
+          <h3>Doble jornada</h3>
+          <p>Ofrecemos cupos en las jornadas de la mañana y de la tarde, según el grado y la disponibilidad.</p>
+        </div>
+        <div class="tarjeta aparece">
+          <div class="icono">🎒</div>
+          <h3>De preescolar a 11°</h3>
+          <p>Recibimos estudiantes en todos los niveles: preescolar, básica primaria, secundaria y media.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Proceso paso a paso -->
-  <section class="seccion">
+  <section class="seccion seccion--suave">
     <div class="contenedor">
       <div class="encabezado-seccion aparece">
         <span class="kicker">Proceso</span>
-        <h2>5 pasos para ingresar</h2>
+        <h2>5 pasos para matricularte</h2>
       </div>
       <ol class="pasos">
         {pasos.map((p) => (
@@ -63,11 +85,11 @@ const fechas = [
   </section>
 
   <!-- Requisitos + Fechas -->
-  <section class="seccion seccion--suave">
+  <section class="seccion">
     <div class="contenedor grid grid--2 bloques">
       <div class="tarjeta aparece">
         <div class="icono">📄</div>
-        <h3>Requisitos de inscripción</h3>
+        <h3>Documentos para la matrícula</h3>
         <ul class="lista-check">
           {requisitos.map((r) => <li>{r}</li>)}
         </ul>
@@ -85,35 +107,7 @@ const fechas = [
             ))}
           </tbody>
         </table>
-        <p class="nota">* Fechas de referencia. Confirma el calendario vigente con el área de admisiones.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Becas -->
-  <section class="seccion">
-    <div class="contenedor">
-      <div class="encabezado-seccion aparece">
-        <span class="kicker">Apoyos</span>
-        <h2>Programa de becas</h2>
-        <p>Reconocemos el esfuerzo y apoyamos a las familias con distintos esquemas.</p>
-      </div>
-      <div class="grid grid--3">
-        <div class="tarjeta aparece">
-          <div class="icono">🏆</div>
-          <h3>Beca de excelencia</h3>
-          <p>Para alumnos con promedio destacado. Aplica desde el ingreso y se mantiene por desempeño.</p>
-        </div>
-        <div class="tarjeta aparece">
-          <div class="icono">💛</div>
-          <h3>Beca de apoyo socioeconómico</h3>
-          <p>Dirigida a familias que requieren respaldo, previa evaluación de su situación.</p>
-        </div>
-        <div class="tarjeta aparece">
-          <div class="icono">👨‍👩‍👧‍👦</div>
-          <h3>Beca por hermanos</h3>
-          <p>Descuento especial cuando dos o más hermanos estudian con nosotros.</p>
-        </div>
+        <p class="nota">* Confirma las fechas y los cupos vigentes en la secretaría de la institución.</p>
       </div>
     </div>
   </section>
@@ -122,11 +116,11 @@ const fechas = [
   <section class="seccion seccion--azul">
     <div class="contenedor cta">
       <div class="aparece">
-        <h2>¿Tienes dudas sobre el proceso?</h2>
-        <p>Escríbenos a {sitio.emailAdmisiones} o llámanos al {sitio.telefono}.</p>
+        <h2>¿Tienes dudas sobre la matrícula?</h2>
+        <p>Comunícate con nosotros y con gusto te orientamos en el proceso.</p>
       </div>
       <div class="aparece">
-        <a href="/contacto" class="btn btn--primario">Contactar admisiones</a>
+        <a href="/contacto" class="btn btn--primario">Contáctanos</a>
       </div>
     </div>
   </section>

@@ -8,16 +8,18 @@ const colorTexto = variante === "blanco" ? "#ffffff" : "var(--azul-900)";
 ---
 
 <a href="/" class="logo" aria-label="Inicio — CESUM">
-  <svg class="logo__mark" viewBox="0 0 64 64" width="40" height="40" aria-hidden="true">
-    <rect width="64" height="64" rx="14" fill="#0d3b66" />
-    <path
-      d="M32 16 9 26l23 10 18-7.83V40h4V26L32 16zm0 24.4-13-5.65V40c0 3.9 5.82 7 13 7s13-3.1 13-7v-5.25L32 40.4z"
-      fill="#f6b41e"
-    />
-  </svg>
+  <img
+    class="logo__mark"
+    src="/escudo.jpeg"
+    alt="Escudo de CESUM"
+    width="33"
+    height="46"
+    loading="eager"
+    decoding="async"
+  />
   <span class="logo__texto">
     <strong>CESUM</strong>
-    <small>Secundaria · Preparatoria</small>
+    <small>Preescolar a Undécimo</small>
   </span>
 </a>
 
@@ -27,7 +29,15 @@ const colorTexto = variante === "blanco" ? "#ffffff" : "var(--azul-900)";
     align-items: center;
     gap: 0.6rem;
   }
-  .logo__mark { flex: none; }
+  .logo__mark {
+    flex: none;
+    height: 46px;
+    width: auto;
+    display: block;
+    background: #fff;
+    border-radius: 8px;
+    padding: 2px 4px;
+  }
   .logo__texto {
     display: flex;
     flex-direction: column;
